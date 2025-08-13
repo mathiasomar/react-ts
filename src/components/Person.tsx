@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContextProvider";
 
 type PersonProps = {
   name: string;
@@ -6,35 +7,17 @@ type PersonProps = {
   isMarried: boolean;
 };
 
-const Person = ({ name, age, isMarried }: PersonProps) => {
-  //   const [showInfo, setShowinfo] = useState<boolean | null>(true);
-  const [bio, setBio] = useState<string | null>("");
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setBio(event.target.value);
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    // Here you can handle the form submission if needed
-    console.log("Bio submitted:", bio);
-  };
-
+const User = ({ name, age, isMarried }: PersonProps) => {
+  const {} = useContext(UserContext);
   return (
     <div>
-      {/* {showInfo && (
-        <>
-          <p>Name: {name}</p>
-          <p>Age: {age}</p>
-          <p>Married: {isMarried ? "Yes" : "No"}</p>
-        </>
-      )} */}
-
-      <p>
-        {name} Bio: {!bio ? "No Bio Available" : bio}
-      </p>
-      <input type="text" onChange={handleChange} />
+      <>
+        <p>Name: {name}</p>
+        <p>Age: {age}</p>
+        <p>Married: {isMarried ? "Yes" : "No"}</p>
+      </>
     </div>
   );
 };
 
-export default Person;
+export default User;
