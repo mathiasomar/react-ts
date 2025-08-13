@@ -7,22 +7,26 @@ type PersonProps = {
 };
 
 const Person = ({ name, age, isMarried }: PersonProps) => {
-  const [showInfo, setShowinfo] = useState<boolean | null>(true);
-  const hundleClick = () => {
-    setShowinfo((prev) => !prev);
+  //   const [showInfo, setShowinfo] = useState<boolean | null>(true);
+  const [bio, setBio] = useState<string | null>("");
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setBio(event.target.value);
   };
+
   return (
     <div>
-      <button onClick={hundleClick}>
-        {showInfo ? "Hide Info" : "Show Info"}
-      </button>
-      {showInfo && (
+      {/* {showInfo && (
         <>
           <p>Name: {name}</p>
           <p>Age: {age}</p>
           <p>Married: {isMarried ? "Yes" : "No"}</p>
         </>
-      )}
+      )} */}
+
+      <p>
+        {name} Bio: {!bio ? "No Bio Available" : bio}
+      </p>
+      <input type="text" onChange={handleChange} />
     </div>
   );
 };
