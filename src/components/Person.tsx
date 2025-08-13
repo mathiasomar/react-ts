@@ -13,6 +13,12 @@ const Person = ({ name, age, isMarried }: PersonProps) => {
     setBio(event.target.value);
   };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    // Here you can handle the form submission if needed
+    console.log("Bio submitted:", bio);
+  };
+
   return (
     <div>
       {/* {showInfo && (
